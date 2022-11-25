@@ -1,0 +1,6 @@
+/TODO.md
+/*.code-workspace
+/vendor
+/tools
+/.php-cs-fixer.cache
+/.php-cs-fixer.dist.php
