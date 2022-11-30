@@ -5,3 +5,4 @@
 /.php-cs-fixer.cache
 /docker/logs/*.log
 /node_modules
+/.vscode

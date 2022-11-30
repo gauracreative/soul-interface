@@ -11,6 +11,21 @@
             "port": 9003
         },
         {
+            "name": "Laravel Sail",
+            "type": "php",
+            "request": "launch",
+            "port": 9003,
+            "stopOnEntry": false,
+            "pathMappings": {
+                "/var/www/html": "${workspaceFolder}"
+            },
+            "ignore": [
+                "**/vendor/**/*.php"
+            ],
+            "log": false,
+            "externalConsole": false
+        },
+        {
             "name": "Launch currently open script",
             "type": "php",
             "request": "launch",
@@ -23,25 +38,6 @@
             "env": {
                 "XDEBUG_MODE": "debug,develop",
                 "XDEBUG_CONFIG": "client_port=${port}"
-            }
-        },
-        {
-            "name": "Launch Built-in web server",
-            "type": "php",
-            "request": "launch",
-            "runtimeArgs": [
-                "-dxdebug.mode=debug",
-                "-dxdebug.start_with_request=yes",
-                "-S",
-                "localhost:0"
-            ],
-            "program": "",
-            "cwd": "${workspaceRoot}",
-            "port": 9003,
-            "serverReadyAction": {
-                "pattern": "Development Server \\(http://localhost:([0-9]+)\\) started",
-                "uriFormat": "http://localhost:%s",
-                "action": "openExternally"
             }
         }
     ]

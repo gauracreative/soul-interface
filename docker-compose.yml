@@ -2,8 +2,8 @@ version: "3"
 services:
   nginx:
     build:
-      context: .
-      dockerfile: docker/nginx/Dockerfile
+      context: ./docker/nginx
+      dockerfile: Dockerfile
     ports: 
       - "8085:80"
     networks:
@@ -13,8 +13,8 @@ services:
       - ./docker/logs:/var/log/nginx/
   php:
     build:
-      context: .
-      dockerfile: docker/php/Dockerfile
+      context: ./docker/php
+      dockerfile: Dockerfile
     networks:
       - internal
     volumes:
