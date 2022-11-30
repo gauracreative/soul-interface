@@ -1,6 +1,7 @@
 /TODO.md
 /*.code-workspace
+/src/.env
 /vendor
-/tools
 /.php-cs-fixer.cache
-/.php-cs-fixer.dist.php
+/docker/logs/*.log
+/node_modules

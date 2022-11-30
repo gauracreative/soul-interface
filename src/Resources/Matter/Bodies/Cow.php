@@ -1,10 +1,12 @@
 <?php
 
-namespace GodAPI\Matter\Bodies;
+declare(strict_types=1);
 
-class Human implements Body
+namespace SI\Resources\Matter\Bodies;
+
+final class Cow implements Body
 {
-    private const NAME = 'Human';
+    private const NAME = 'Cow';
 
     public function getName(): string
     {
@@ -13,7 +15,7 @@ class Human implements Body
 
     public function abilityToThink(): ?string
     {
-        return 'Yes, quite advantageous';
+        return 'Not a very significant one';
     }
 
     public function abilityToSmell(): ?string
@@ -43,6 +45,6 @@ class Human implements Body
 
     public function abilityToMoveAroundAndAct(): ?string
     {
-        return 'Yes, via 2 legs, 2 hands, etc.';
+        return 'Yes, via 4 legs, etc.';
     }
 }

@@ -1,14 +1,29 @@
-include .env
+include src/.env
 export
 
+destroy:
+		docker-compose rm -vsf
+		docker-compose down -v --remove-orphans
+build:
+		docker-compose build --no-cache
+up:
+		docker-compose up -d
+
+stop:
+		docker-compose down
+
+in:
+		docker-compose exec php ash
+
 test:
-	./vendor/bin/phpunit tests --color
+		docker-compose exec php vendor/bin/phpunit tests --color
 
 fix:
-	./tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src
+		docker-compose exec php vendor/bin/php-cs-fixer fix src
+		docker-compose exec php vendor/bin/php-cs-fixer fix docs
 
 cres:
-	composer dump-autoload
+		docker-compose exec php composer dump-autoload
 
 test1:
 	@if [ $(args) = on ]; then \

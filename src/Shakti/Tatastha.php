@@ -1,16 +1,26 @@
 <?php
 
-namespace GodAPI\Shakti;
+declare(strict_types=1);
 
-class Tatastha implements Shakti
+namespace SI\Shakti;
+
+use SI\Shakti\onDemandPowers\Siddha;
+use SI\Jiva;
+
+class Tatastha extends Siddha implements Shakti
 {
-    private const NAME = 'Taṭasthā-śakti a.k.a. Jīva-śakti';
+    private const NAMES = ['Taṭasthā-śakti', 'Jīva-śakti'];
     private const DESCRIPTION = 'marginal potency';
     private const CONDITIONED_PHRASE = ', but being conditioned/covered identify/experience myself through mind and senses as ';
 
     public function getName(): string
     {
-        return self::NAME;
+        return self::NAMES[0];
+    }
+
+    public function getNames(): array
+    {
+        return self::NAMES;
     }
 
     public function getDescription(): string
@@ -18,18 +28,8 @@ class Tatastha implements Shakti
         return self::DESCRIPTION;
     }
 
-    public function cloudSat(string $originalSat): string
+    public function createJiva(?bool $mukta = null, ?string $siddhaDeha = null): Jiva
     {
-        return $originalSat . self::CONDITIONED_PHRASE . 'temporary';
-    }
-
-    public function cloudCit(string $originalChit): string
-    {
-        return $originalChit . self::CONDITIONED_PHRASE . 'limitted and ignorant. My pride might not let me admit most of that, but this is just another outcome of my ignorance.';
-    }
-
-    public function cloudAnanda(string $originalAnanda): string
-    {
-        return $originalAnanda . self::CONDITIONED_PHRASE . 'measurable, and if only striving for success and happiness.';
+        return new Jiva($mukta, $siddhaDeha);
     }
 }

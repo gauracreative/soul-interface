@@ -1,6 +1,8 @@
 <?php
 
-namespace GodAPI\Matter\Bodies;
+declare(strict_types=1);
+
+namespace SI\Resources\Matter\Bodies;
 
 interface Body
 {
