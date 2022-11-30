@@ -10,6 +10,11 @@ use SI\Resources\Matter\Bodies\Human;
 use SI\Resources\Spirit\Adhikar\Prema;
 use SI\Resources\Spirit\Adhikar\Sukriti;
 use SI\Resources\Spirit\Adhikar\Shraddha;
+use SI\Resources\Matter\Modes\Nirguna;
+use SI\Resources\Matter\Modes\Sattva;
+use SI\Resources\Matter\Modes\Rajas;
+use SI\Resources\Matter\Modes\Tamas;
+use SI\Resources\Matter\Modes\Mix;
 
 final class JivaTest extends TestCase
 {
@@ -58,5 +63,24 @@ final class JivaTest extends TestCase
         $this->assertInstanceOf(Prema::class, $jiva->getBhaktiAdhikar());
         $this->assertTrue($jiva->isMukta());
         $this->assertNull($jiva->body());
+    }
+
+    public function testJivaState(): void
+    {
+        $jiva = new Jiva(false);
+        $jiva->incarnate(new Human);
+        $jiva->setBhaktiAdhikar(new Shraddha);
+        $state = $jiva->howIamFeeling();
+        $this->assertInstanceOf(Mix::class, $state);
+        $this->assertInstanceOf(Sattva::class, $state->sattva);
+        $this->assertInstanceOf(Rajas::class, $state->rajas);
+        $this->assertInstanceOf(Tamas::class, $state->tamas);
+        $this->assertLessThanOrEqual($_ENV['GUNA_LEVEL_MAX'], $state->sattva->getLevel());
+        $this->assertLessThanOrEqual($_ENV['GUNA_LEVEL_MAX'], $state->rajas->getLevel());
+        $this->assertLessThanOrEqual($_ENV['GUNA_LEVEL_MAX'], $state->tamas->getLevel());
+        $jiva->setBhaktiAdhikar(new Prema);
+        $state = $jiva->howIamFeeling();
+        $this->assertInstanceOf(Nirguna::class, $state);
+        $this->assertEquals($_ENV['GUNA_LEVEL_MAX'], $state->getLevel());
     }
 }

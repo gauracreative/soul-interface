@@ -16,8 +16,7 @@
     ],
     "autoload": {
         "classmap": [
-            "src/",
-            "docs/"
+            "src/"
         ]
     },
     "require-dev": {

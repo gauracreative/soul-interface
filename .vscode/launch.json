@@ -5,13 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Listen for Xdebug",
-            "type": "php",
-            "request": "launch",
-            "port": 9003
-        },
-        {
-            "name": "Laravel Sail",
+            "name": "Soul Interface",
             "type": "php",
             "request": "launch",
             "port": 9003,

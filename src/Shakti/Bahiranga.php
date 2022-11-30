@@ -4,10 +4,13 @@ declare(strict_types=1);
 
 namespace SI\Shakti;
 
-use SI\Shakti\onDemandPowers\Incarnate;
+use SI\Shakti\onDemandPowers\Incarnate as IncarnateTrait;
+use SI\Resources\Matter\Modes\Mix as GunaMix;
 
-class Bahiranga extends Incarnate implements Shakti
+class Bahiranga implements Shakti
 {
+    use IncarnateTrait;
+
     public const CONDITIONED_PHRASE = ' in nature, but temporarily identify/experience myself through mind and senses as ';
     private const NAMES = ['Bahiraṅga-śakti', 'Māyā-śakti', 'Pradhāna'];
     private const DESCRIPTION = 'external potency, material illusiory energy that conditions living entities in this world';
@@ -48,5 +51,10 @@ class Bahiranga extends Incarnate implements Shakti
             return mt_rand(0, 1) ? new self() : false;
         }
         return $inforceMukta ? false : new self();
+    }
+
+    public static function getGunaMix(): GunaMix
+    {
+        return new GunaMix();
     }
 }

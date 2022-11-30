@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SI\Shakti\onDemandPowers;
 
-abstract class Incarnate
+trait Incarnate
 {
     public static function getAvailableBodies(): array
     {

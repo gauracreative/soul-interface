@@ -17,27 +17,21 @@ abstract class Divinity
         $dotenv = Dotenv::createImmutable(__DIR__);
         $dotenv->load();
         $_ENV['ROOT_PATH'] = dirname(__DIR__);
+        $_ENV['GUNA_LEVEL_MAX'] = 100;
     }
 
-    public function sat()
+    public function sat(): string
     {
         return self::SAT_STATE;
     }
 
-    public function cit()
+    public function cit(): string
     {
         return self::CIT_STATE;
     }
 
-    public function ananda()
+    public function ananda(): string
     {
         return self::ANANDA_STATE;
-    }
-
-    final public function me()
-    {
-        $this->sat();
-        $this->cit();
-        $this->ananda();
     }
 }

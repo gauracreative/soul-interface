@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SI\Shakti\onDemandPowers;
 
-abstract class Siddha
+trait Siddha
 {
     public static function getAvailableSiddhaDehas(): array
     {

@@ -11,8 +11,8 @@ use SI\Shakti\Tatastha as TatasthaShakti;
 use SI\Resources\Spirit\Adhikar\bhaktiAdhikar;
 use SI\Resources\Spirit\Adhikar\Prema;
 use SI\Resources\Spirit\Adhikar\Sukriti;
-
-use function PHPUnit\Framework\throwException;
+use SI\Resources\Matter\Modes\Mix as GunaMix;
+use SI\Resources\Matter\Modes\Nirguna;
 
 final class Jiva extends Divinity
 {
@@ -45,17 +45,17 @@ final class Jiva extends Divinity
         $this->incarnate();
     }
 
-    public function sat()
+    public function sat(): string
     {
         return $this->isMukta() ? Divinity::SAT_STATE : $this->covering->cloudSat(Divinity::SAT_STATE);
     }
 
-    public function cit()
+    public function cit(): string
     {
         return $this->isMukta() ? Divinity::CIT_STATE : $this->covering->cloudCit(Divinity::CIT_STATE);
     }
 
-    public function ananda()
+    public function ananda(): string
     {
         return $this->isMukta() ? Divinity::ANANDA_STATE : $this->covering->cloudAnanda(Divinity::ANANDA_STATE);
     }
@@ -120,5 +120,10 @@ final class Jiva extends Divinity
             $class = '\SI\Resources\Spirit\Adhikar\\'.self::BHAKTI_LEVELS[$newLevel];
             $this->setBhaktiAdhikar(new $class());
         }
+    }
+
+    public function howIamFeeling(): GunaMix|Nirguna
+    {
+        return TatasthaShakti::getJivaState($this);
     }
 }

@@ -20,7 +20,6 @@ test:
 
 fix:
 		docker-compose exec php vendor/bin/php-cs-fixer fix src
-		docker-compose exec php vendor/bin/php-cs-fixer fix docs
 
 cres:
 		docker-compose exec php composer dump-autoload
