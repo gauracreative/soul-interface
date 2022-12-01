@@ -13,7 +13,7 @@ class Bahiranga implements Shakti
 
     public const CONDITIONED_PHRASE = ' in nature, but temporarily identify/experience myself through mind and senses as ';
     private const NAMES = ['Bahiraṅga-śakti', 'Māyā-śakti', 'Pradhāna'];
-    private const DESCRIPTION = 'external potency, material illusiory energy that conditions living entities in this world';
+    private const DESCRIPTION = 'external potency, material illusory energy that conditions living entities in this world';
 
     public function getName(): string
     {
@@ -37,7 +37,7 @@ class Bahiranga implements Shakti
 
     public function cloudCit(string $originalChit): string
     {
-        return $originalChit . self::CONDITIONED_PHRASE . 'limitted and ignorant about a number of things. Ocasionally my pride might not let me admit most of that, but that is just another outcome of my ignorance.';
+        return $originalChit . self::CONDITIONED_PHRASE . 'limited and ignorant about a number of things. Occasionally my pride might not let me admit most of that, but that is just another outcome of my ignorance.';
     }
 
     public function cloudAnanda(string $originalAnanda): string
@@ -45,12 +45,12 @@ class Bahiranga implements Shakti
         return $originalAnanda . self::CONDITIONED_PHRASE . 'living a not very satisfying life. I do strive for success and happiness, but I do not have full eternal bliss.';
     }
 
-    public static function coverRandomly(?bool $inforceMukta = null): self|false
+    public static function coverRandomly(?bool $enforceMukta = null): self|false
     {
-        if (is_null($inforceMukta)) {
+        if (is_null($enforceMukta)) {
             return mt_rand(0, 1) ? new self() : false;
         }
-        return $inforceMukta ? false : new self();
+        return $enforceMukta ? false : new self();
     }
 
     public static function getGunaMix(): GunaMix

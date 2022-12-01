@@ -25,7 +25,7 @@ final class JivaTest extends TestCase
         $this->assertEquals(Divinity::SAT_STATE, $jiva->sat());
         $this->assertEquals(Divinity::CIT_STATE, $jiva->cit());
         $this->assertEquals(Divinity::ANANDA_STATE, $jiva->ananda());
-        $this->assertInstanceOf(SiddhaDeha::class, $jiva->revealSidhaDeva());
+        $this->assertInstanceOf(SiddhaDeha::class, $jiva->revealSiddhaDeha());
         $this->assertInstanceOf(Prema::class, $jiva->getBhaktiAdhikar());
         $this->assertNull($jiva->body());
     }
@@ -37,7 +37,7 @@ final class JivaTest extends TestCase
         $this->assertStringContainsString(Bahiranga::CONDITIONED_PHRASE, $jiva->sat());
         $this->assertStringContainsString(Bahiranga::CONDITIONED_PHRASE, $jiva->cit());
         $this->assertStringContainsString(Bahiranga::CONDITIONED_PHRASE, $jiva->ananda());
-        $this->assertInstanceOf(SiddhaDeha::class, $jiva->revealSidhaDeva());
+        $this->assertInstanceOf(SiddhaDeha::class, $jiva->revealSiddhaDeha());
         $this->assertInstanceOf(Sukriti::class, $jiva->getBhaktiAdhikar());
         $this->assertInstanceOf(Body::class, $jiva->body());
         $this->expectException(InvalidArgumentException::class);

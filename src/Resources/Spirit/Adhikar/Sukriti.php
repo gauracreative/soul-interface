@@ -13,6 +13,6 @@ final class Sukriti implements bhaktiAdhikar
 
     public function getDescription(): ?string
     {
-        return 'gathering spiritual pios credits';
+        return 'gathering spiritual pious credits';
     }
 }

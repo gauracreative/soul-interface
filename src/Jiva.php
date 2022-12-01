@@ -65,7 +65,7 @@ final class Jiva extends Divinity
         return $this->covering === false;
     }
 
-    public function revealSidhaDeva(): SiddhaDeha
+    public function revealSiddhaDeha(): SiddhaDeha
     {
         return $this->siddhaDeha;
     }
@@ -94,9 +94,9 @@ final class Jiva extends Divinity
     {
         // validate
         if (!is_null($bhaktiAdhikar) && !is_a($this->body(), 'SI\Resources\Matter\Bodies\Human')) {
-            throw new \InvalidArgumentException('This Jīva is not in human body currently. Cannot set Adhikara');
+            throw new \InvalidArgumentException('This Jīva is not in human body currently. Cannot set Adhikar');
         } elseif ($this->isMukta() && !is_null($bhaktiAdhikar) && !is_a($bhaktiAdhikar, 'SI\Resources\Spirit\Adhikar\Prema')) {
-            throw new \InvalidArgumentException('For liberated soul Adhikara must be set to Prema');
+            throw new \InvalidArgumentException('For liberated soul Adhikar must be set to Prema');
         }
         // set
         if ($this->isMukta()) {
