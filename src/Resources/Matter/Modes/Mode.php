@@ -4,11 +4,46 @@ declare(strict_types=1);
 
 namespace SI\Resources\Matter\Modes;
 
-interface Mode
+abstract class Mode
 {
-    public function getName(): string;
+    protected const NAME = 'guna';
+    protected const DESCRIPTION = 'mode';
+    protected const COLOR = 'yellow';
 
-    public function getDescription(): ?string;
+    protected int $level;
 
-    public function getLevel(): int;
+    public function __construct(?int $level = null)
+    {
+        $this->level = $level ?? mt_rand(0, intval($_ENV['GUNA_LEVEL_MAX']));
+    }
+
+    public function getName(): string
+    {
+        return static::NAME;
+    }
+
+    public function getDescription(): string
+    {
+        return static::DESCRIPTION;
+    }
+
+    public function getLevel(): int
+    {
+        return $this->level;
+    }
+
+    public function getColor(): string
+    {
+        return static::COLOR;
+    }
+
+    public function toArray(): array
+    {
+        return [
+          'name' => $this->getName(),
+          'description' => $this->getDescription(),
+          'color' => $this->getColor(),
+          'level' => $this->getLevel(),
+        ];
+    }
 }

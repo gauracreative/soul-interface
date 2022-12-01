@@ -16,4 +16,13 @@ final class Mix
         $this->rajas = new Rajas($rajasLevel);
         $this->tamas = new Tamas($tamasLevel);
     }
+
+    public function toArray(): array
+    {
+        return [
+          'sattva' => $this->sattva->toArray(),
+          'rajas' => $this->rajas->toArray(),
+          'tamas' => $this->tamas->toArray(),
+        ];
+    }
 }

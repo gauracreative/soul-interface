@@ -17,7 +17,6 @@ abstract class Divinity
         $dotenv = Dotenv::createImmutable(__DIR__);
         $dotenv->load();
         $_ENV['ROOT_PATH'] = dirname(__DIR__);
-        $_ENV['GUNA_LEVEL_MAX'] = 100;
     }
 
     public function sat(): string
