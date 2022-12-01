@@ -36,7 +36,7 @@ trait Siddha
     {
         // in real life there are unlimited types of siddha dehas...
         // but we will use a few here for our little demo purposes
-        $availableSiddhaDehas = self::getAvailableSiddhaDehas();
+        $availableSiddhaDehas = static::getAvailableSiddhaDehas();
         $randomIndex = \count($availableSiddhaDehas) > 1 ? mt_rand(0, \count($availableSiddhaDehas) - 1) : 0;
         $bodyClass = 'SI\Resources\Spirit\Identities\\' . $availableSiddhaDehas[$randomIndex];
         return new $bodyClass();

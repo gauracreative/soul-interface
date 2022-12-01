@@ -11,16 +11,16 @@ class Antaranga implements Shakti
 
     public function getName(): string
     {
-        return self::NAMES[0];
+        return static::NAMES[0];
     }
 
     public function getNames(): array
     {
-        return self::NAMES;
+        return static::NAMES;
     }
 
     public function getDescription(): string
     {
-        return self::DESCRIPTION;
+        return static::DESCRIPTION;
     }
 }

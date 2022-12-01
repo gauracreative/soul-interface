@@ -12,9 +12,9 @@ abstract class Mode
 
     protected int $level;
 
-    public function __construct(?int $level = null)
+    public function __construct(int $level)
     {
-        $this->level = $level ?? mt_rand(0, intval($_ENV['GUNA_LEVEL_MAX']));
+        $this->level = $level;
     }
 
     public function getName(): string

@@ -27,7 +27,7 @@ final class Svarupa implements Shakti
 
     public function getDescription(): string
     {
-        return self::DESCRIPTION;
+        return static::DESCRIPTION;
     }
 
     public function cit(): Antaranga

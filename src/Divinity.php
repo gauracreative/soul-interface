@@ -21,16 +21,16 @@ abstract class Divinity
 
     public function sat(): string
     {
-        return self::SAT_STATE;
+        return static::SAT_STATE;
     }
 
     public function cit(): string
     {
-        return self::CIT_STATE;
+        return static::CIT_STATE;
     }
 
     public function ananda(): string
     {
-        return self::ANANDA_STATE;
+        return static::ANANDA_STATE;
     }
 }

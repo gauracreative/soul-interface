@@ -10,8 +10,11 @@ final class Mix
     public Rajas $rajas;
     public Tamas $tamas;
 
-    public function __construct(?int $sattvaLevel = null, ?int $rajasLevel = null, ?int $tamasLevel = null)
+    public function __construct(?int $level = 100)
     {
+        $sattvaLevel = mt_rand(0, intval($_ENV['GUNA_LEVEL_MAX']));
+        $rajasLevel = mt_rand(0, intval($_ENV['GUNA_LEVEL_MAX'])*$level/100);
+        $tamasLevel = mt_rand(0, intval($_ENV['GUNA_LEVEL_MAX'])*$level/100);
         $this->sattva = new Sattva($sattvaLevel);
         $this->rajas = new Rajas($rajasLevel);
         $this->tamas = new Tamas($tamasLevel);

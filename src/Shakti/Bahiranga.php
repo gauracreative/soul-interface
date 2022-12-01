@@ -17,32 +17,32 @@ class Bahiranga implements Shakti
 
     public function getName(): string
     {
-        return self::NAMES[0];
+        return static::NAMES[0];
     }
 
     public function getNames(): array
     {
-        return self::NAMES;
+        return static::NAMES;
     }
 
     public function getDescription(): string
     {
-        return self::DESCRIPTION;
+        return static::DESCRIPTION;
     }
 
     public function cloudSat(string $originalSat): string
     {
-        return $originalSat . self::CONDITIONED_PHRASE . 'living a very finite life';
+        return $originalSat . static::CONDITIONED_PHRASE . 'living a very finite life';
     }
 
     public function cloudCit(string $originalChit): string
     {
-        return $originalChit . self::CONDITIONED_PHRASE . 'limited and ignorant about a number of things. Occasionally my pride might not let me admit most of that, but that is just another outcome of my ignorance.';
+        return $originalChit . static::CONDITIONED_PHRASE . 'limited and ignorant about a number of things. Occasionally my pride might not let me admit most of that, but that is just another outcome of my ignorance.';
     }
 
     public function cloudAnanda(string $originalAnanda): string
     {
-        return $originalAnanda . self::CONDITIONED_PHRASE . 'living a not very satisfying life. I do strive for success and happiness, but I do not have full eternal bliss.';
+        return $originalAnanda . static::CONDITIONED_PHRASE . 'living a not very satisfying life. I do strive for success and happiness, but I do not have full eternal bliss.';
     }
 
     public static function coverRandomly(?bool $enforceMukta = null): self|false

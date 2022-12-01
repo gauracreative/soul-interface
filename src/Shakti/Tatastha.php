@@ -18,17 +18,17 @@ class Tatastha implements Shakti
 
     public function getName(): string
     {
-        return self::NAMES[0];
+        return static::NAMES[0];
     }
 
     public function getNames(): array
     {
-        return self::NAMES;
+        return static::NAMES;
     }
 
     public function getDescription(): string
     {
-        return self::DESCRIPTION;
+        return static::DESCRIPTION;
     }
 
     public function createJiva(?bool $mukta = null, ?string $siddhaDeha = null): Jiva
@@ -39,9 +39,9 @@ class Tatastha implements Shakti
     public static function getJivaState(Jiva $jiva): GunaMix|Nirguna
     {
         if ($jiva->isMukta()) {
-            return new Nirguna();
+            return new Nirguna(0);
         } else {
-            return Bahiranga::getGunaMix();
+            return Bahiranga::getGunaMix($jiva->getCoverage());
         }
     }
 }

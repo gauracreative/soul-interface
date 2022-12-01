@@ -36,7 +36,7 @@ trait Incarnate
     {
         // in real life there are about 8,400,000 only types of bodies...
         // but we will use a few here for our little demo purposes
-        $availableBodies = self::getAvailableBodies();
+        $availableBodies = static::getAvailableBodies();
         $randomIndex = \count($availableBodies) > 1 ? mt_rand(0, \count($availableBodies) - 1) : 0;
         $bodyClass = 'SI\Resources\Matter\Bodies\\' . $availableBodies[$randomIndex];
         return new $bodyClass();

@@ -10,7 +10,7 @@ final class Human implements Body
 
     public function getName(): string
     {
-        return self::NAME;
+        return static::NAME;
     }
 
     public function abilityToThink(): ?string

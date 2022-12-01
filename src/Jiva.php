@@ -116,10 +116,22 @@ final class Jiva extends Divinity
     {
         if (!$this->isMukta()) {
             $segments = explode('\\', get_class($this->bhaktiAdhikar));
-            $newLevel = array_search(end($segments), self::BHAKTI_LEVELS) + 1;
-            $class = '\SI\Resources\Spirit\Adhikar\\'.self::BHAKTI_LEVELS[$newLevel];
+            $newLevel = array_search(end($segments), static::BHAKTI_LEVELS) + 1;
+            $class = '\SI\Resources\Spirit\Adhikar\\'.static::BHAKTI_LEVELS[$newLevel];
             $this->setBhaktiAdhikar(new $class());
         }
+    }
+
+    public function getLevel(): int
+    {
+        $segments = explode('\\', get_class($this->bhaktiAdhikar));
+        return array_search(end($segments), static::BHAKTI_LEVELS);
+    }
+
+    public function getCoverage(): int
+    {
+        $level = $this->getLevel();
+        return 10*(10-$level);
     }
 
     public function howIamFeeling(): GunaMix|Nirguna
