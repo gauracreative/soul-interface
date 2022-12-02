@@ -6,6 +6,20 @@ namespace SI;
 
 final class Krishna extends Bhagavan
 {
+    private const FORMS = [
+        'rama' => [
+            'purusha' => 'Śrī Rāma',
+            'shakti' => 'Śrī Sīta'
+        ],
+        'narayan' => [
+            'purusha' => ['Śrī Nārāyaṇa', 'Śrī Viṣṇu'],
+            'shakti' => 'Śrī Lakṣmī'
+        ],
+        'nrsmha' => [
+            'purusha' => 'Śrī Narasiṃha',
+            'shakti' => 'Śrī Lakṣmī'
+        ]
+    ];
     private array $forms = [];
 
     public function __construct()
@@ -16,18 +30,21 @@ final class Krishna extends Bhagavan
     public static function Om(): self
     {
         $Krishna = new self();
-        $Krishna->forms['rama'] = new Bhagavan('Śrī Rāma', 'Śrī Sīta');
-        $Krishna->forms['visnu'] = new Bhagavan('Śrī Viṣṇu', 'Śrī Lakṣmī');
-        $Krishna->forms['narayan'] = new Bhagavan('Śrī Nārāyaṇa', 'Śrī Lakṣmī');
-        $Krishna->forms['nrsmha'] = new Bhagavan('Śrī Narasiṃha', 'Śrī Lakṣmī');
+        foreach (static::FORMS as $key => $names) {
+            $Krishna->forms[$key] = new Bhagavan($names['purusha'], $names['shakti']);
+        }
         $Krishna->shakti->jiva->createJivas();
 
         return $Krishna;
     }
 
-    public function revealForms(): array
+    public static function getForms(?bool $includeKrishna = false): array
     {
-        return array_keys($this->forms);
+        $forms = array_keys(static::FORMS);
+        if ($includeKrishna) {
+            $forms[] = 'krsna';
+        }
+        return $forms;
     }
 
     public function revealForm(string $key): Bhagavan

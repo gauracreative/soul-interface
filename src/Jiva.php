@@ -13,6 +13,7 @@ use SI\Resources\Spirit\Adhikar\Prema;
 use SI\Resources\Spirit\Adhikar\Sukriti;
 use SI\Resources\Matter\Modes\Mix as GunaMix;
 use SI\Resources\Matter\Modes\Nirguna;
+use SI\Resources\Matter\Karma\Karma;
 
 final class Jiva extends Divinity
 {
@@ -33,14 +34,15 @@ final class Jiva extends Divinity
     private SiddhaDeha $siddhaDeha;
     private ?Body $materialBody = null;
     private BahirangaShakti|false $covering;
+    public Karma $karma;
+    private string $istaDev;
 
-    public function __construct(
-        ?bool $mukta = null,
-        ?SiddhaDeha $siddhaDeha = null
-    ) {
+    public function __construct()
+    {
         parent::__construct();
-        $this->siddhaDeha = $siddhaDeha ?? TatasthaShakti::getRandomSiddhaDeha();
-        $this->covering = BahirangaShakti::coverRandomly($mukta);
+        $this->istaDev = TatasthaShakti::setIstaDev();
+        $this->siddhaDeha = TatasthaShakti::getRandomSiddhaDeha($this->istaDev);
+        $this->covering = BahirangaShakti::coverRandomly();
         $this->setBhaktiAdhikar();
         $this->incarnate();
     }
@@ -81,6 +83,7 @@ final class Jiva extends Divinity
             $newBody = null;
         } elseif (!$newBody) {
             $newBody = BahirangaShakti::getRandomBody();
+            $this->karma = new Karma();
         }
         $this->materialBody = $newBody;
     }
@@ -88,6 +91,11 @@ final class Jiva extends Divinity
     public function getBhaktiAdhikar(): bhaktiAdhikar
     {
         return $this->bhaktiAdhikar;
+    }
+
+    public function getIstaDev(): string
+    {
+        return $this->istaDev;
     }
 
     public function setBhaktiAdhikar(?bhaktiAdhikar $bhaktiAdhikar = null): void

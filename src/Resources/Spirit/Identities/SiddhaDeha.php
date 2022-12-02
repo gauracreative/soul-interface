@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace SI\Resources\Spirit\Identities;
 
+use SI\Krishna;
+
 abstract class SiddhaDeha
 {
     public function getName(): string
@@ -19,5 +21,10 @@ abstract class SiddhaDeha
     public function getSeva(): string
     {
         return 'unrestricted, fully-expressed loving service to God that both pleases God and completely satisfies the jiva';
+    }
+
+    public function support(): array
+    {
+        return Krishna::getForms(true);
     }
 }

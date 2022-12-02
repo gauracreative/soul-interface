@@ -45,12 +45,9 @@ class Bahiranga implements Shakti
         return $originalAnanda . static::CONDITIONED_PHRASE . 'living a not very satisfying life. I do strive for success and happiness, but I do not have full eternal bliss.';
     }
 
-    public static function coverRandomly(?bool $enforceMukta = null): self|false
+    public static function coverRandomly(): self|false
     {
-        if (is_null($enforceMukta)) {
-            return mt_rand(0, 1) ? new self() : false;
-        }
-        return $enforceMukta ? false : new self();
+        return mt_rand(0, 1) ? new self() : false;
     }
 
     public static function getGunaMix(): GunaMix

@@ -15,8 +15,8 @@ final class DevTest extends TestCase
     public function testDev(): void
     {
         $this->assertEquals('Śrī Kṛṣṇa', $this->K->name());
-        $this->assertTrue(!empty($this->K->revealForms()));
-        $this->assertIsArray($this->K->revealForms());
+        $this->assertFalse(empty(Krishna::getForms()));
+        $this->assertIsArray(Krishna::getForms());
         $this->assertEquals('Śrī Rāma', $this->K->revealForm('rama')->name());
         $this->assertEquals('Taṭasthā-śakti', $this->K->shakti->jiva->getName());
         $this->assertIsArray($this->K->shakti->jiva->getJivas());
@@ -24,5 +24,8 @@ final class DevTest extends TestCase
         $human = $this->K->shakti->jiva->getHuman();
         $this->assertEquals('Human', $human->body()->getName());
         $this->assertFalse($human->isMukta());
+        $this->assertTrue(in_array($human->getIstaDev(), Krishna::getForms(true)));
+        $this->assertEquals(PRARABDHA_STARTER, $human->karma->fruits);
+        $this->assertEquals(0, $human->karma->seeds);
     }
 }

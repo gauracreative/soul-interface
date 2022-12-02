@@ -93,4 +93,17 @@ final class JivaTest extends TestCase
         $this->assertInstanceOf(Nirguna::class, $state);
         $this->assertEquals(GUNA_LEVEL_MAX, $state->getLevel());
     }
+
+    public function testHuman(): void
+    {
+        $human = $this->K->shakti->jiva->getHuman();
+        $this->assertEquals('Human', $human->body()->getName());
+        $this->assertFalse($human->isMukta());
+    }
+
+    public function testIstaDev(): void
+    {
+        $human = $this->K->shakti->jiva->getHuman();
+        $this->assertTrue(in_array($human->getIstaDev(), Krishna::getForms(true)));
+    }
 }

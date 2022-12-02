@@ -12,4 +12,9 @@ class Sakha extends SiddhaDeha
     {
         return static::NAME;
     }
+
+    public function support(): array
+    {
+        return ['krsna'];
+    }
 }

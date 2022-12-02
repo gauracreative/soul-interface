@@ -24,6 +24,9 @@ abstract class Divinity
         if (!defined('JIVAS_COUNT')) {
             define('JIVAS_COUNT', 108);
         }
+        if (!defined('PRARABDHA_STARTER')) {
+            define('PRARABDHA_STARTER', 108);
+        }
     }
 
     public function sat(): string
