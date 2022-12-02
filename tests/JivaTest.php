@@ -72,19 +72,18 @@ final class JivaTest extends TestCase
         $jiva->setBhaktiAdhikar(new Shraddha);
         $level = $jiva->getCoverage();
         $this->assertEquals('90', $level);
-        $max = $_ENV['GUNA_LEVEL_MAX'];
-        $level = $level*$max/100;
+        $level = $level*GUNA_LEVEL_MAX/100;
         $state = $jiva->howIamFeeling();
         $this->assertInstanceOf(Mix::class, $state);
         $this->assertInstanceOf(Sattva::class, $state->sattva);
         $this->assertInstanceOf(Rajas::class, $state->rajas);
         $this->assertInstanceOf(Tamas::class, $state->tamas);
-        $this->assertLessThanOrEqual($max, $state->sattva->getLevel());
+        $this->assertLessThanOrEqual(GUNA_LEVEL_MAX, $state->sattva->getLevel());
         $this->assertLessThanOrEqual($level, $state->rajas->getLevel());
         $this->assertLessThanOrEqual($level, $state->tamas->getLevel());
         $jiva->setBhaktiAdhikar(new Prema);
         $state = $jiva->howIamFeeling();
         $this->assertInstanceOf(Nirguna::class, $state);
-        $this->assertEquals($max, $state->getLevel());
+        $this->assertEquals(GUNA_LEVEL_MAX, $state->getLevel());
     }
 }

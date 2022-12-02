@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace SI;
 
-use Dotenv\Dotenv;
-
 abstract class Divinity
 {
     public const SAT_STATE = 'I am eternal';
@@ -14,9 +12,12 @@ abstract class Divinity
 
     public function __construct()
     {
-        $dotenv = Dotenv::createImmutable(__DIR__);
-        $dotenv->load();
-        $_ENV['ROOT_PATH'] = dirname(__DIR__);
+        if (!defined('GUNA_LEVEL_MAX')) {
+            define('GUNA_LEVEL_MAX', 255);
+        }
+        if (!defined('ROOT_PATH')) {
+            define('ROOT_PATH', dirname(__DIR__));
+        }
     }
 
     public function sat(): string

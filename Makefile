@@ -1,6 +1,3 @@
-include src/.env
-export
-
 destroy:
 		docker-compose rm -vsf
 		docker-compose down -v --remove-orphans

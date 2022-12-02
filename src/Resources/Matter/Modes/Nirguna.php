@@ -11,6 +11,6 @@ final class Nirguna extends Mode
 
     public function getLevel(): int
     {
-        return intval($_ENV['GUNA_LEVEL_MAX']);
+        return GUNA_LEVEL_MAX;
     }
 }
