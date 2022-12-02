@@ -92,6 +92,7 @@ final class Jiva extends Divinity
 
     public function setBhaktiAdhikar(?bhaktiAdhikar $bhaktiAdhikar = null): void
     {
+        $class = $this->body() ? get_class($this->body()) : '';
         // validate
         if (!is_null($bhaktiAdhikar) && !is_a($this->body(), 'SI\Resources\Matter\Bodies\Human')) {
             throw new \InvalidArgumentException('This Jīva is not in human body currently. Cannot set Adhikar');
@@ -136,6 +137,10 @@ final class Jiva extends Divinity
 
     public function howIamFeeling(): GunaMix|Nirguna
     {
-        return TatasthaShakti::getJivaState($this);
+        if ($this->isMukta()) {
+            return new Nirguna(0);
+        } else {
+            return BahirangaShakti::getGunaMix($this->getCoverage());
+        }
     }
 }

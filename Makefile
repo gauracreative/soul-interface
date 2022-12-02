@@ -13,7 +13,10 @@ in:
 		docker-compose exec php ash
 
 test:
-		docker-compose exec php vendor/bin/phpunit tests --color
+		docker-compose exec php vendor/bin/phpunit --testsuite Unit
+
+testd:
+		docker-compose exec php vendor/bin/phpunit --testsuite Dev
 
 fix:
 		docker-compose exec php vendor/bin/php-cs-fixer fix src

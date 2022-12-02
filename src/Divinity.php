@@ -18,6 +18,9 @@ abstract class Divinity
         if (!defined('ROOT_PATH')) {
             define('ROOT_PATH', dirname(__DIR__));
         }
+        if (!defined('JIVAS_COUNT')) {
+            define('JIVAS_COUNT', 108);
+        }
     }
 
     public function sat(): string

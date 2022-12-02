@@ -3,6 +3,7 @@
 use PHPUnit\Framework\TestCase;
 use SI\Jiva;
 use SI\Divinity;
+use SI\Krishna;
 use SI\Shakti\Bahiranga;
 use SI\Resources\Spirit\Identities\SiddhaDeha;
 use SI\Resources\Matter\Bodies\Body;
@@ -18,9 +19,16 @@ use SI\Resources\Matter\Modes\Mix;
 
 final class JivaTest extends TestCase
 {
+    private Krishna $K;
+
+    protected function setUp(): void
+    {
+        $this->K = Krishna::Om();
+    }
+
     public function testMukta(): void
     {
-        $jiva = new Jiva(true);
+        $jiva = $this->K->shakti->jiva->getMukta();
         $this->assertTrue($jiva->isMukta());
         $this->assertEquals(Divinity::SAT_STATE, $jiva->sat());
         $this->assertEquals(Divinity::CIT_STATE, $jiva->cit());
@@ -32,7 +40,7 @@ final class JivaTest extends TestCase
 
     public function testBaddha(): void
     {
-        $jiva = new Jiva(false);
+        $jiva = $this->K->shakti->jiva->getBaddha();
         $this->assertFalse($jiva->isMukta());
         $this->assertStringContainsString(Bahiranga::CONDITIONED_PHRASE, $jiva->sat());
         $this->assertStringContainsString(Bahiranga::CONDITIONED_PHRASE, $jiva->cit());
@@ -50,8 +58,7 @@ final class JivaTest extends TestCase
 
     public function testBhaktiAdhikar(): void
     {
-        $jiva = new Jiva(false);
-        $jiva->incarnate(new Human);
+        $jiva = $this->K->shakti->jiva->getHuman();
         $jiva->setBhaktiAdhikar(new Shraddha);
         $this->assertInstanceOf(Shraddha::class, $jiva->getBhaktiAdhikar());
         $jiva->setBhaktiAdhikar(new Sukriti);
@@ -67,8 +74,8 @@ final class JivaTest extends TestCase
 
     public function testJivaState(): void
     {
-        $jiva = new Jiva(false);
-        $jiva->incarnate(new Human);
+        $jiva = $this->K->shakti->jiva->getHuman();
+        // echo 'Hahaha'.$jiva->body()->getName();
         $jiva->setBhaktiAdhikar(new Shraddha);
         $level = $jiva->getCoverage();
         $this->assertEquals('90', $level);

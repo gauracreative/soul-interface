@@ -9,16 +9,11 @@ use SI\Shakti\Svarupa as SvarupaShakti;
 abstract class Shaktiman extends Divinity
 {
     // complete potency | Svarūpa-śakti
-    private SvarupaShakti $svarupaShakti;
+    public readonly SvarupaShakti $shakti;
 
     public function __construct(string|array $shaktiNames = 'Śrīmatī Rādhikā')
     {
         parent::__construct();
-        $this->svarupaShakti = new SvarupaShakti($shaktiNames);
-    }
-
-    public function shakti()
-    {
-        return $this->svarupaShakti;
+        $this->shakti = new SvarupaShakti($shaktiNames);
     }
 }

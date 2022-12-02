@@ -10,9 +10,16 @@ final class Svarupa implements Shakti
 
     private array $names = ['Svarūpa-śakti', 'Pārā-śakti'];
 
+    public readonly Bahiranga $maya;
+    public readonly Antaranga $cit;
+    public readonly Tatastha $jiva;
+
     public function __construct(string|array $shaktiNames = 'Śrīmatī Rādhikā')
     {
         $this->names = array_merge($this->names, (array) $shaktiNames);
+        $this->cit = new Antaranga();
+        $this->maya = new Bahiranga();
+        $this->jiva = new Tatastha();
     }
 
     public function getName(): string
@@ -28,21 +35,6 @@ final class Svarupa implements Shakti
     public function getDescription(): string
     {
         return static::DESCRIPTION;
-    }
-
-    public function cit(): Antaranga
-    {
-        return new Antaranga();
-    }
-
-    public function maya(): Bahiranga
-    {
-        return new Bahiranga();
-    }
-
-    public function jiva(): Tatastha
-    {
-        return new Tatastha();
     }
 
     public function cloudSat(string $originalSat): string
