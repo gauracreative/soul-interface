@@ -27,7 +27,7 @@ final class Krishna extends Bhagavan
 
     public function revealForms(): array
     {
-        return $this->forms;
+        return array_keys($this->forms);
     }
 
     public function revealForm(string $key): Bhagavan

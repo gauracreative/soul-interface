@@ -15,6 +15,9 @@ abstract class Divinity
         if (!defined('GUNA_LEVEL_MAX')) {
             define('GUNA_LEVEL_MAX', 255);
         }
+        if (!defined('GUNA_LEVEL_MIN')) {
+            define('GUNA_LEVEL_MIN', 25);
+        }
         if (!defined('ROOT_PATH')) {
             define('ROOT_PATH', dirname(__DIR__));
         }

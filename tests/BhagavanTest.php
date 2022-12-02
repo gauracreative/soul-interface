@@ -15,9 +15,8 @@ final class BhagavanTest extends TestCase
 
     public function testBasic(): void
     {
-        $this->assertEquals('Śrī Kṛṣṇa', $this->K->getName());
-        $ParaShaktis = $this->K->shakti->getNames();
-        $this->assertEquals('Śrī Rādhā', end($ParaShaktis));
+        $this->assertEquals('Śrī Kṛṣṇa', $this->K->name());
+        $this->assertEquals('Śrīmatī Rādhikā', $this->K->shaktiNames[0]);
         $this->assertEquals(Divinity::SAT_STATE, $this->K->sat());
         $this->assertEquals(Divinity::CIT_STATE, $this->K->cit());
         $this->assertEquals(Divinity::ANANDA_STATE, $this->K->ananda());
@@ -30,11 +29,10 @@ final class BhagavanTest extends TestCase
     public function testNames(): void
     {
         $Rama = $this->K->revealForm('rama');
-        $this->assertEquals('Śrī Rāma', $Rama->getName());
-        $ParaShaktis = $Rama->shakti->getNames();
-        $this->assertEquals('Śrī Sīta', end($ParaShaktis));
-        $this->assertEquals('Śrī Kṛṣṇa Govinda Syama', implode(' ', $this->K->getNames()));
-        $ParaShaktis = implode(' ', $this->K->shakti->getNames());
-        $this->assertEquals('Svarūpa-śakti Pārā-śakti Śrīmatī Rādhikā Śrī Rādhā', $ParaShaktis);      
+        $this->assertEquals('Śrī Rāma', $Rama->name());
+        $this->assertEquals('Śrī Sīta', $Rama->shaktiNames[0]);
+        $this->assertEquals('Śrī Kṛṣṇa Govinda Syama', implode(' ', $this->K->names));
+        $ParaShaktis = implode(' ', $this->K->shaktiNames);
+        $this->assertEquals('Śrīmatī Rādhikā Śrī Rādhā', $ParaShaktis);      
     }
 }

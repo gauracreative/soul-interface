@@ -4,25 +4,26 @@ declare(strict_types=1);
 
 namespace SI;
 
-class Bhagavan extends Shaktiman
+use SI\Shakti\Svarupa as SvarupaShakti;
+
+class Bhagavan extends Divinity
 {
-    protected array $names = [];
-    protected array $paraShaktiNames = [];
+    public readonly array $names;
+    public readonly array $shaktiNames;
+
+    // complete potency | Svarūpa-śakti
+    public readonly SvarupaShakti $shakti;
 
     public function __construct(string|array $purushaNames, string|array $shaktiNames)
     {
+        parent::__construct();
         $this->names = (array) $purushaNames;
-        $this->paraShaktiNames = (array) $shaktiNames;
-        parent::__construct($this->paraShaktiNames);
+        $this->shaktiNames = (array) $shaktiNames;
+        $this->shakti = SvarupaShakti::getInstance();
     }
 
-    public function getName(): string
+    public function name(): string
     {
         return $this->names[0];
-    }
-
-    public function getNames(): array
-    {
-        return $this->names;
     }
 }

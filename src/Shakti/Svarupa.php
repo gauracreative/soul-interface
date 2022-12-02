@@ -9,17 +9,25 @@ final class Svarupa implements Shakti
     private const DESCRIPTION = 'complete potency';
 
     private array $names = ['Svarūpa-śakti', 'Pārā-śakti'];
+    private static self $instance;
 
     public readonly Bahiranga $maya;
     public readonly Antaranga $cit;
     public readonly Tatastha $jiva;
 
-    public function __construct(string|array $shaktiNames = 'Śrīmatī Rādhikā')
+    public function __construct()
     {
-        $this->names = array_merge($this->names, (array) $shaktiNames);
         $this->cit = new Antaranga();
         $this->maya = new Bahiranga();
         $this->jiva = new Tatastha();
+    }
+
+    public static function getInstance(): self
+    {
+        if (!isset(self::$instance)) {
+            self::$instance = new self();
+        }
+        return self::$instance;
     }
 
     public function getName(): string
@@ -35,20 +43,5 @@ final class Svarupa implements Shakti
     public function getDescription(): string
     {
         return static::DESCRIPTION;
-    }
-
-    public function cloudSat(string $originalSat): string
-    {
-        return $originalSat;
-    }
-
-    public function cloudCit(string $originalChit): string
-    {
-        return $originalChit;
-    }
-
-    public function cloudAnanda(string $originalAnanda): string
-    {
-        return $originalAnanda;
     }
 }

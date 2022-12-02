@@ -14,10 +14,10 @@ final class DevTest extends TestCase
 
     public function testDev(): void
     {
-        $this->assertEquals('Śrī Kṛṣṇa', $this->K->getName());
+        $this->assertEquals('Śrī Kṛṣṇa', $this->K->name());
         $this->assertTrue(!empty($this->K->revealForms()));
         $this->assertIsArray($this->K->revealForms());
-        $this->assertEquals('Śrī Rāma', $this->K->revealForms()['rama']->getName());
+        $this->assertEquals('Śrī Rāma', $this->K->revealForm('rama')->name());
         $this->assertEquals('Taṭasthā-śakti', $this->K->shakti->jiva->getName());
         $this->assertIsArray($this->K->shakti->jiva->getJivas());
         $this->assertTrue(count($this->K->shakti->jiva->getJivas()) == JIVAS_COUNT);
