@@ -24,8 +24,19 @@ abstract class Divinity
         if (!defined('JIVAS_COUNT')) {
             define('JIVAS_COUNT', 108);
         }
-        if (!defined('PRARABDHA_STARTER')) {
-            define('PRARABDHA_STARTER', 108);
+        if (!defined('KARMAPOINTS_START')) {
+            define('KARMAPOINTS_START', 300);
+        }
+        if (!defined('HUMAN_LIFESPAN')) {
+            define('HUMAN_LIFESPAN', 82);
+        }
+        if (!defined('PURUSHARTHA')) {
+            define('PURUSHARTHA', [
+                'Dharma' => 300,
+                'Artha' => 600,
+                'Kama' => 900,
+                'Moksha' => 1200
+            ]);
         }
     }
 
