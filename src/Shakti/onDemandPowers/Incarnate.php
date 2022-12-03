@@ -8,7 +8,7 @@ trait Incarnate
 {
     public static function getAvailableBodies(): array
     {
-        $base = $_ENV['ROOT_PATH'] ?? dirname(__DIR__, 3);
+        $base = dirname(__DIR__, 3);
         $dir =$base.'/src/Resources/Matter/Bodies/*.php';
         $availableBodies = array_filter(
             glob($dir),

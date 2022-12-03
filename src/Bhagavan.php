@@ -16,7 +16,6 @@ class Bhagavan extends Divinity
 
     public function __construct(string|array $purushaNames, string|array $shaktiNames)
     {
-        parent::__construct();
         $this->names = (array) $purushaNames;
         $this->shaktiNames = (array) $shaktiNames;
         $this->shakti = SvarupaShakti::getInstance();

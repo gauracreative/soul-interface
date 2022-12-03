@@ -14,6 +14,7 @@ use SI\Resources\Spirit\Adhikar\Sukriti;
 use SI\Resources\Matter\Modes\Mix as GunaMix;
 use SI\Resources\Matter\Modes\Nirguna;
 use SI\Resources\Matter\Karma\Karma;
+use SI\config;
 
 final class Jiva extends Divinity
 {
@@ -39,7 +40,6 @@ final class Jiva extends Divinity
 
     public function __construct()
     {
-        parent::__construct();
         $this->istaDev = TatasthaShakti::setIstaDev();
         $this->siddhaDeha = TatasthaShakti::getRandomSiddhaDeha($this->istaDev);
         $this->covering = BahirangaShakti::coverRandomly();
@@ -137,10 +137,13 @@ final class Jiva extends Divinity
         return array_search(end($segments), static::BHAKTI_LEVELS);
     }
 
-    public function getCoverage(): int
+    // percentage, the less the lighter karma / coverage
+    public function clarityGrade(): int
     {
-        $level = $this->getLevel();
-        return 10*(10-$level);
+        $bhaktiLevel = $this->getLevel();
+        $bhaktiLevel = 10*(10-$bhaktiLevel);
+        $karmaLevel = (config::KARMAPOINTS_TOP - $this->karma->seeds)/config::KARMAPOINTS_TOP;
+        return intval($bhaktiLevel*$karmaLevel);
     }
 
     public function howIamFeeling(): GunaMix|Nirguna
@@ -148,7 +151,7 @@ final class Jiva extends Divinity
         if ($this->isMukta()) {
             return new Nirguna(0);
         } else {
-            return BahirangaShakti::getGunaMix($this->getCoverage());
+            return BahirangaShakti::getGunaMix($this->clarityGrade());
         }
     }
 }

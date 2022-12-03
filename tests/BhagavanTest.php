@@ -3,6 +3,7 @@
 use PHPUnit\Framework\TestCase;
 use SI\Krishna;
 use SI\Divinity;
+use SI\config;
 
 final class BhagavanTest extends TestCase
 {
@@ -21,7 +22,7 @@ final class BhagavanTest extends TestCase
         $this->assertEquals(Divinity::CIT_STATE, $this->K->cit());
         $this->assertEquals(Divinity::ANANDA_STATE, $this->K->ananda());
         $this->assertTrue(count(Krishna::getForms()) > 1);
-        $this->assertTrue(count($this->K->shakti->jiva->getJivas()) == JIVAS_COUNT);
+        $this->assertTrue(count($this->K->shakti->jiva->getJivas()) == config::JIVAS_COUNT);
         
         
     }

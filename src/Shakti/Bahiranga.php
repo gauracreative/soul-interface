@@ -50,8 +50,8 @@ class Bahiranga implements Shakti
         return mt_rand(0, 1) ? new self() : false;
     }
 
-    public static function getGunaMix(): GunaMix
+    public static function getGunaMix(int $clarity): GunaMix
     {
-        return new GunaMix();
+        return new GunaMix($clarity);
     }
 }

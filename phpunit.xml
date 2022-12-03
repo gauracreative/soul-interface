@@ -8,7 +8,7 @@
         <testsuite name="Unit">
             <file>tests/BhagavanTest.php</file>
             <file>tests/JivaTest.php</file>
-            <file>tests/EnvTest.php</file>
+            <file>tests/KarmaTest.php</file>
         </testsuite>
         <testsuite name="Dev">
             <file>tests/DevTest.php</file>

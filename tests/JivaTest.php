@@ -16,6 +16,7 @@ use SI\Resources\Matter\Modes\Sattva;
 use SI\Resources\Matter\Modes\Rajas;
 use SI\Resources\Matter\Modes\Tamas;
 use SI\Resources\Matter\Modes\Mix;
+use SI\config;
 
 final class JivaTest extends TestCase
 {
@@ -75,23 +76,22 @@ final class JivaTest extends TestCase
     public function testJivaState(): void
     {
         $jiva = $this->K->shakti->jiva->getHuman();
-        // echo 'Hahaha'.$jiva->body()->getName();
         $jiva->setBhaktiAdhikar(new Shraddha);
-        $level = $jiva->getCoverage();
+        $level = $jiva->clarityGrade();
         $this->assertEquals('90', $level);
-        $level = $level*GUNA_LEVEL_MAX/100;
+        $level = $level*config::GUNA_LEVEL_MAX/100;
         $state = $jiva->howIamFeeling();
         $this->assertInstanceOf(Mix::class, $state);
         $this->assertInstanceOf(Sattva::class, $state->sattva);
         $this->assertInstanceOf(Rajas::class, $state->rajas);
         $this->assertInstanceOf(Tamas::class, $state->tamas);
-        $this->assertLessThanOrEqual(GUNA_LEVEL_MAX, $state->sattva->getLevel());
+        $this->assertLessThanOrEqual(config::GUNA_LEVEL_MAX, $state->sattva->getLevel());
         $this->assertLessThanOrEqual($level, $state->rajas->getLevel());
         $this->assertLessThanOrEqual($level, $state->tamas->getLevel());
         $jiva->setBhaktiAdhikar(new Prema);
         $state = $jiva->howIamFeeling();
         $this->assertInstanceOf(Nirguna::class, $state);
-        $this->assertEquals(GUNA_LEVEL_MAX, $state->getLevel());
+        $this->assertEquals(config::GUNA_LEVEL_MAX, $state->getLevel());
     }
 
     public function testHuman(): void

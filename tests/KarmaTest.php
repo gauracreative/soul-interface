@@ -2,6 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 use SI\Krishna;
+use SI\config;
 
 final class KarmaTest extends TestCase
 {
@@ -15,7 +16,7 @@ final class KarmaTest extends TestCase
     public function testBasicKarma(): void
     {
         $karma = $this->K->shakti->jiva->getHuman()->karma;
-        $this->assertEquals(KARMAPOINTS_START, $karma->fruits);
+        $this->assertEquals(config::KARMAPOINTS_START, $karma->fruits);
         $this->assertEquals(0, $karma->seeds);
     }
 
@@ -32,7 +33,7 @@ final class KarmaTest extends TestCase
     {
         $karma = $this->K->shakti->jiva->getHuman()->karma;
         $this->assertNull($karma->getPurushartha());
-        foreach(PURUSHARTHA as $label => $level){
+        foreach(config::PURUSHARTHA as $label => $level){
             $karma->seeds = $level;
             $this->assertEquals($label, $karma->getPurushartha());
         }

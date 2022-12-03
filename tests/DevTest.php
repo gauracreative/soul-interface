@@ -2,6 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 use SI\Krishna;
+use SI\config;
 
 final class DevTest extends TestCase
 {
@@ -15,10 +16,10 @@ final class DevTest extends TestCase
     public function testPurushartha(): void
     {
         $karma = $this->K->shakti->jiva->getHuman()->karma;
-        $this->assertEquals(KARMAPOINTS_START, $karma->fruits);
+        $this->assertEquals(config::KARMAPOINTS_START, $karma->fruits);
         $this->assertEquals(0, $karma->seeds);
         $this->assertNull($karma->getPurushartha());
-        foreach(PURUSHARTHA as $label => $level){
+        foreach(config::PURUSHARTHA as $label => $level){
             $karma->seeds = $level;
             $this->assertEquals($label, $karma->getPurushartha());
         }

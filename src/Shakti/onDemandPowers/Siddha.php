@@ -10,7 +10,7 @@ trait Siddha
 {
     public static function getAvailableSiddhaDehas(): array
     {
-        $base = $_ENV['ROOT_PATH'] ?? dirname(__DIR__, 3);
+        $base = dirname(__DIR__, 3);
         $dir =$base.'/src/Resources/Spirit/Identities/*.php';
         $availableSiddhaDehas = array_filter(
             glob($dir),

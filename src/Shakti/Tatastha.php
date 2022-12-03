@@ -7,6 +7,7 @@ namespace SI\Shakti;
 use InvalidArgumentException;
 use SI\Shakti\onDemandPowers\Siddha as SiddhaTrait;
 use SI\Jiva;
+use SI\config;
 
 class Tatastha implements Shakti
 {
@@ -34,7 +35,7 @@ class Tatastha implements Shakti
 
     public function createJivas(?int $count = null): void
     {
-        $count = $count ?? JIVAS_COUNT;
+        $count = $count ?? config::JIVAS_COUNT;
 
         for ($i = 1; $i <= $count; $i++) {
             $this->jivas[] = new Jiva();

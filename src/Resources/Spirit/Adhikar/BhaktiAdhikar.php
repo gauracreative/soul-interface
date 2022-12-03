@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SI\Resources\Spirit\Adhikar;
 
-interface bhaktiAdhikar
+interface BhaktiAdhikar
 {
     public function getName(): string;
 

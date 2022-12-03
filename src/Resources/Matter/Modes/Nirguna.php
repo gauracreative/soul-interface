@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace SI\Resources\Matter\Modes;
 
+use SI\config;
+
 final class Nirguna extends Mode
 {
     protected const NAME = 'Nirguna, pure goodness';
@@ -11,6 +13,6 @@ final class Nirguna extends Mode
 
     public function getLevel(): int
     {
-        return GUNA_LEVEL_MAX;
+        return config::GUNA_LEVEL_MAX;
     }
 }

@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace SI\Resources\Matter\Bodies;
 
+use SI\config;
+
 final class Human implements Body
 {
     private const NAME = 'Human';
-    private const LIFESPAN = HUMAN_LIFESPAN;
+    private const LIFESPAN = config::HUMAN_LIFESPAN;
     private int $lifespan;
     private int $age = 0;
 
