@@ -141,9 +141,9 @@ final class Jiva extends Divinity
     public function clarityGrade(): int
     {
         $bhaktiLevel = $this->getLevel();
-        $bhaktiLevel = 10*(10-$bhaktiLevel);
+        $bhaktiLevel = (10-$bhaktiLevel)/10;
         $karmaLevel = (config::KARMAPOINTS_TOP - $this->karma->seeds)/config::KARMAPOINTS_TOP;
-        return intval($bhaktiLevel*$karmaLevel);
+        return intval($bhaktiLevel*$karmaLevel*100);
     }
 
     public function howIamFeeling(): GunaMix|Nirguna

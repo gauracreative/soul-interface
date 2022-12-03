@@ -95,7 +95,6 @@ class Tatastha implements Shakti
                 break;
             }
         }
-        unset($jiva);
         return $one;
     }
 

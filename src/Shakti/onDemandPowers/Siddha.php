@@ -54,7 +54,6 @@ trait Siddha
                 break;
             }
         }
-        unset($sd);
         return new $siddhaDeha();
     }
 }

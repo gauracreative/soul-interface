@@ -106,4 +106,16 @@ final class JivaTest extends TestCase
         $human = $this->K->shakti->jiva->getHuman();
         $this->assertTrue(in_array($human->getIstaDev(), Krishna::getForms(true)));
     }
+
+    public function testBhaktiLevel(): void
+    {
+        $human = $this->K->shakti->jiva->getHuman();
+        $this->assertEquals(0, $human->getLevel());
+        foreach(Jiva::BHAKTI_LEVELS as $i => $class){
+            $class = 'SI\Resources\Spirit\Adhikar\\'.$class;
+            $newAdhikar = new $class();
+            $human->setBhaktiAdhikar($newAdhikar);
+            $this->assertEquals($i, $human->getLevel());
+        }
+    }
 }
