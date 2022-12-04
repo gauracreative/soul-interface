@@ -9,6 +9,7 @@ use SI\Shakti\Svarupa as SvarupaShakti;
 class Bhagavan extends Divinity
 {
     public readonly array $names;
+
     public readonly array $shaktiNames;
 
     // complete potency | Svarūpa-śakti

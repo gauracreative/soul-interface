@@ -9,7 +9,7 @@ trait Incarnate
     public static function getAvailableBodies(): array
     {
         $base = dirname(__DIR__, 3);
-        $dir =$base.'/src/Resources/Matter/Bodies/*.php';
+        $dir = $base.'/src/Resources/Matter/Bodies/*.php';
         $availableBodies = array_filter(
             glob($dir),
             function ($path) {
@@ -29,6 +29,7 @@ trait Incarnate
                 return $class != 'Body';
             }
         );
+
         return array_values($availableBodies);
     }
 
@@ -37,7 +38,8 @@ trait Incarnate
         // in real life there are about 8,400,000 only types of bodies...
         // but we will use a few here for our little demo purposes
         $availableBodies = static::getAvailableBodies();
-        $bodyClass = 'SI\Resources\Matter\Bodies\\' . $availableBodies[array_rand($availableBodies)];
+        $bodyClass = 'SI\Resources\Matter\Bodies\\'.$availableBodies[array_rand($availableBodies)];
+
         return new $bodyClass();
     }
 }

@@ -9,17 +9,18 @@ final class Krishna extends Bhagavan
     private const FORMS = [
         'rama' => [
             'purusha' => 'Śrī Rāma',
-            'shakti' => 'Śrī Sīta'
+            'shakti' => 'Śrī Sīta',
         ],
         'narayan' => [
             'purusha' => ['Śrī Nārāyaṇa', 'Śrī Viṣṇu'],
-            'shakti' => 'Śrī Lakṣmī'
+            'shakti' => 'Śrī Lakṣmī',
         ],
         'nrsmha' => [
             'purusha' => 'Śrī Narasiṃha',
-            'shakti' => 'Śrī Lakṣmī'
-        ]
+            'shakti' => 'Śrī Lakṣmī',
+        ],
     ];
+
     private array $forms = [];
 
     public function __construct()
@@ -44,6 +45,7 @@ final class Krishna extends Bhagavan
         if ($includeKrishna) {
             $forms[] = 'krsna';
         }
+
         return $forms;
     }
 

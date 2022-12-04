@@ -11,7 +11,7 @@ trait Siddha
     public static function getAvailableSiddhaDehas(): array
     {
         $base = dirname(__DIR__, 3);
-        $dir =$base.'/src/Resources/Spirit/Identities/*.php';
+        $dir = $base.'/src/Resources/Spirit/Identities/*.php';
         $availableSiddhaDehas = array_filter(
             glob($dir),
             function ($path) {
@@ -31,12 +31,14 @@ trait Siddha
                 return $class != 'SiddhaDeha';
             }
         );
+
         return array_values($availableSiddhaDehas);
     }
 
     public static function setIstaDev()
     {
         $forms = Krishna::getForms(true);
+
         return $forms[array_rand($forms)];
     }
 
@@ -47,13 +49,14 @@ trait Siddha
         $siddhaDeha = null;
         $availableSiddhaDehas = static::getAvailableSiddhaDehas();
         foreach ($availableSiddhaDehas as $name) {
-            $class = 'SI\Resources\Spirit\Identities\\' . $name;
+            $class = 'SI\Resources\Spirit\Identities\\'.$name;
             $sd = new $class();
             if (in_array($istaDev, $sd->support())) {
                 $siddhaDeha = $sd;
                 break;
             }
         }
+
         return new $siddhaDeha();
     }
 }

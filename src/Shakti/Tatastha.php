@@ -5,15 +5,15 @@ declare(strict_types=1);
 namespace SI\Shakti;
 
 use InvalidArgumentException;
-use SI\Shakti\onDemandPowers\Siddha as SiddhaTrait;
 use SI\Jiva;
-use SI\config;
+use SI\Shakti\onDemandPowers\Siddha as SiddhaTrait;
 
 class Tatastha implements Shakti
 {
     use SiddhaTrait;
 
     private const NAMES = ['Taṭasthā-śakti', 'Jīva-śakti'];
+
     private const DESCRIPTION = 'marginal potency';
 
     private array $jivas = [];
@@ -35,7 +35,7 @@ class Tatastha implements Shakti
 
     public function createJivas(?int $count = null): void
     {
-        $count = $count ?? config::JIVAS_COUNT;
+        $count = $count ?? config('souli.jivas_count');
 
         for ($i = 1; $i <= $count; $i++) {
             $this->jivas[] = new Jiva();
@@ -67,7 +67,7 @@ class Tatastha implements Shakti
     {
         $one = null;
         shuffle($this->jivas);
-        if (!$filters) {
+        if (! $filters) {
             return $this->jivas[0];
         }
         foreach ($this->jivas as $jiva) {
@@ -95,6 +95,7 @@ class Tatastha implements Shakti
                 break;
             }
         }
+
         return $one;
     }
 

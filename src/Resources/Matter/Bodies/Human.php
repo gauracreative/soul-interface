@@ -4,18 +4,17 @@ declare(strict_types=1);
 
 namespace SI\Resources\Matter\Bodies;
 
-use SI\config;
-
 final class Human implements Body
 {
     private const NAME = 'Human';
-    private const LIFESPAN = config::HUMAN_LIFESPAN;
+
     private int $lifespan;
+
     private int $age = 0;
 
     public function __construct(?int $lifespan = null)
     {
-        $this->lifespan = $lifespan ?? static::LIFESPAN;
+        $this->lifespan = $lifespan ?? config('souli.human_lifespan');
     }
 
     public function getName(): string
@@ -34,6 +33,7 @@ final class Human implements Body
             return false;
         }
         $this->age++;
+
         return true;
     }
 

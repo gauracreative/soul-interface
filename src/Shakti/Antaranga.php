@@ -7,6 +7,7 @@ namespace SI\Shakti;
 class Antaranga implements Shakti
 {
     private const NAMES = ['Antaraṅga-śakti', 'Cit-śakti'];
+
     private const DESCRIPTION = 'internal potency';
 
     public function getName(): string

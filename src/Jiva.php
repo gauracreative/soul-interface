@@ -5,16 +5,15 @@ declare(strict_types=1);
 namespace SI;
 
 use SI\Resources\Matter\Bodies\Body;
-use SI\Resources\Spirit\Identities\SiddhaDeha;
-use SI\Shakti\Bahiranga as BahirangaShakti;
-use SI\Shakti\Tatastha as TatasthaShakti;
+use SI\Resources\Matter\Karma\Karma;
+use SI\Resources\Matter\Modes\Mix as GunaMix;
+use SI\Resources\Matter\Modes\Nirguna;
 use SI\Resources\Spirit\Adhikar\bhaktiAdhikar;
 use SI\Resources\Spirit\Adhikar\Prema;
 use SI\Resources\Spirit\Adhikar\Sukriti;
-use SI\Resources\Matter\Modes\Mix as GunaMix;
-use SI\Resources\Matter\Modes\Nirguna;
-use SI\Resources\Matter\Karma\Karma;
-use SI\config;
+use SI\Resources\Spirit\Identities\SiddhaDeha;
+use SI\Shakti\Bahiranga as BahirangaShakti;
+use SI\Shakti\Tatastha as TatasthaShakti;
 
 final class Jiva extends Divinity
 {
@@ -28,14 +27,19 @@ final class Jiva extends Divinity
         'Ruchi',
         'Asakti',
         'Bhava',
-        'Prema'
+        'Prema',
     ];
 
     private ?bhaktiAdhikar $bhaktiAdhikar = null;
+
     private SiddhaDeha $siddhaDeha;
+
     private ?Body $materialBody = null;
+
     private BahirangaShakti|false $covering;
+
     public Karma $karma;
+
     private string $istaDev;
 
     public function __construct()
@@ -81,7 +85,7 @@ final class Jiva extends Divinity
     {
         if ($this->isMukta()) {
             $newBody = null;
-        } elseif (!$newBody) {
+        } elseif (! $newBody) {
             $newBody = BahirangaShakti::getRandomBody();
             $this->karma = new Karma();
         }
@@ -102,9 +106,9 @@ final class Jiva extends Divinity
     {
         $class = $this->body() ? get_class($this->body()) : '';
         // validate
-        if (!is_null($bhaktiAdhikar) && !is_a($this->body(), 'SI\Resources\Matter\Bodies\Human')) {
+        if (! is_null($bhaktiAdhikar) && ! is_a($this->body(), 'SI\Resources\Matter\Bodies\Human')) {
             throw new \InvalidArgumentException('This Jīva is not in human body currently. Cannot set Adhikar');
-        } elseif ($this->isMukta() && !is_null($bhaktiAdhikar) && !is_a($bhaktiAdhikar, 'SI\Resources\Spirit\Adhikar\Prema')) {
+        } elseif ($this->isMukta() && ! is_null($bhaktiAdhikar) && ! is_a($bhaktiAdhikar, 'SI\Resources\Spirit\Adhikar\Prema')) {
             throw new \InvalidArgumentException('For liberated soul Adhikar must be set to Prema');
         }
         // set
@@ -123,7 +127,7 @@ final class Jiva extends Divinity
 
     public function doBhakti(): void
     {
-        if (!$this->isMukta()) {
+        if (! $this->isMukta()) {
             $segments = explode('\\', get_class($this->bhaktiAdhikar));
             $newLevel = array_search(end($segments), static::BHAKTI_LEVELS) + 1;
             $class = '\SI\Resources\Spirit\Adhikar\\'.static::BHAKTI_LEVELS[$newLevel];
@@ -134,6 +138,7 @@ final class Jiva extends Divinity
     public function getLevel(): int
     {
         $segments = explode('\\', get_class($this->bhaktiAdhikar));
+
         return array_search(end($segments), static::BHAKTI_LEVELS);
     }
 
@@ -141,9 +146,10 @@ final class Jiva extends Divinity
     public function clarityGrade(): int
     {
         $bhaktiLevel = $this->getLevel();
-        $bhaktiLevel = (10-$bhaktiLevel)/10;
-        $karmaLevel = (config::KARMAPOINTS_TOP - $this->karma->seeds)/config::KARMAPOINTS_TOP;
-        return intval($bhaktiLevel*$karmaLevel*100);
+        $bhaktiLevel = (10 - $bhaktiLevel) / 10;
+        $karmaLevel = (config('souli.karma.top') - $this->karma->seeds) / config('souli.karma.top');
+
+        return intval($bhaktiLevel * $karmaLevel * 100);
     }
 
     public function howIamFeeling(): GunaMix|Nirguna

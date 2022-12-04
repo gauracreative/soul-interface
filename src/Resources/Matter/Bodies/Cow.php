@@ -7,8 +7,11 @@ namespace SI\Resources\Matter\Bodies;
 final class Cow implements Body
 {
     private const NAME = 'Cow';
+
     private const LIFESPAN = 18;
+
     private int $lifespan;
+
     private int $age = 0;
 
     public function __construct(?int $lifespan = null)
@@ -32,6 +35,7 @@ final class Cow implements Body
             return false;
         }
         $this->age++;
+
         return true;
     }
 

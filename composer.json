@@ -1,5 +1,5 @@
 {
-    "name": "gaura108/soul-interface",
+    "name": "gauracreative/soul-interface",
     "description": "Vedic paradigm through OOP principles",
     "keywords": [
         "Vedas", "God", "Krishna", "Rama", "soul", "jiva", "maya", "karma"
@@ -19,9 +19,6 @@
             "SI\\": "src/"
         }
     },
-    "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.13",
-        "phpunit/phpunit": "^9"
-    },
+    "require-dev": {},
     "require": {}
 }

@@ -7,7 +7,9 @@ namespace SI\Resources\Matter\Modes;
 abstract class Mode
 {
     protected const NAME = 'guna';
+
     protected const DESCRIPTION = 'mode';
+
     protected const COLOR = 'yellow';
 
     protected int $level;
@@ -40,10 +42,10 @@ abstract class Mode
     public function toArray(): array
     {
         return [
-          'name' => $this->getName(),
-          'description' => $this->getDescription(),
-          'color' => $this->getColor(),
-          'level' => $this->getLevel(),
+            'name' => $this->getName(),
+            'description' => $this->getDescription(),
+            'color' => $this->getColor(),
+            'level' => $this->getLevel(),
         ];
     }
 }
