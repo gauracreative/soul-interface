@@ -8,30 +8,15 @@ use InvalidArgumentException;
 use SI\Jiva;
 use SI\Shakti\onDemandPowers\Siddha as SiddhaTrait;
 
-class Tatastha implements Shakti
+final class Tatastha extends Shakti
 {
     use SiddhaTrait;
 
-    private const NAMES = ['Taṭasthā-śakti', 'Jīva-śakti'];
+    protected const NAMES = ['Taṭasthā-śakti', 'Jīva-śakti'];
 
-    private const DESCRIPTION = 'marginal potency';
+    protected const DESCRIPTION = 'Marginal potency. Taṭasthā means shore-line. A tide might get it wet. Then it might become dry-ish again. Similar is a position of Jīva (soul). It can be with Bhagavān, enjoying an eternal loving relationship, or it can be under Māyā-śakti and forgetting Bhagavān.';
 
     private array $jivas = [];
-
-    public function getName(): string
-    {
-        return static::NAMES[0];
-    }
-
-    public function getNames(): array
-    {
-        return static::NAMES;
-    }
-
-    public function getDescription(): string
-    {
-        return static::DESCRIPTION;
-    }
 
     public function createJivas(?int $count = null): void
     {
@@ -39,7 +24,6 @@ class Tatastha implements Shakti
 
         for ($i = 1; $i <= $count; $i++) {
             $this->jivas[] = new Jiva();
-            // var_dump($this->jivas);
         }
     }
 

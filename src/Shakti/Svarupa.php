@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace SI\Shakti;
 
-final class Svarupa implements Shakti
+final class Svarupa extends Shakti
 {
-    private const DESCRIPTION = 'complete potency';
+    protected const NAMES = ['Svarūpa-śakti', 'Pārā-śakti'];
 
-    private array $names = ['Svarūpa-śakti', 'Pārā-śakti'];
+    protected const DESCRIPTION = 'complete potency';
 
     private static self $instance;
 
@@ -32,20 +32,5 @@ final class Svarupa implements Shakti
         }
 
         return self::$instance;
-    }
-
-    public function getName(): string
-    {
-        return $this->names[0];
-    }
-
-    public function getNames(): array
-    {
-        return $this->names;
-    }
-
-    public function getDescription(): string
-    {
-        return static::DESCRIPTION;
     }
 }
