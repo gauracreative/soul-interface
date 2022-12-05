@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace SI\Shakti\onDemandPowers;
 
-abstract class Incarnate
+trait Incarnate
 {
     public static function getAvailableBodies(): array
     {
-        $base = $_ENV['ROOT_PATH'] ?? dirname(__DIR__, 3);
-        $dir =$base.'/src/Resources/Matter/Bodies/*.php';
+        $base = dirname(__DIR__, 3);
+        $dir = $base.'/src/Resources/Matter/Bodies/*.php';
         $availableBodies = array_filter(
             glob($dir),
             function ($path) {
@@ -29,6 +29,7 @@ abstract class Incarnate
                 return $class != 'Body';
             }
         );
+
         return array_values($availableBodies);
     }
 
@@ -36,9 +37,9 @@ abstract class Incarnate
     {
         // in real life there are about 8,400,000 only types of bodies...
         // but we will use a few here for our little demo purposes
-        $availableBodies = self::getAvailableBodies();
-        $randomIndex = \count($availableBodies) > 1 ? mt_rand(0, \count($availableBodies) - 1) : 0;
-        $bodyClass = 'SI\Resources\Matter\Bodies\\' . $availableBodies[$randomIndex];
+        $availableBodies = static::getAvailableBodies();
+        $bodyClass = 'SI\Resources\Matter\Bodies\\'.$availableBodies[array_rand($availableBodies)];
+
         return new $bodyClass();
     }
 }

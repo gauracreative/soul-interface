@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SI\Resources\Spirit\Adhikar;
 
-final class Shraddha implements bhaktiAdhikar
+final class Shraddha implements BhaktiAdhikar
 {
     public function getName(): string
     {

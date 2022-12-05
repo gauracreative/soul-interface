@@ -4,59 +4,33 @@ declare(strict_types=1);
 
 namespace SI\Shakti;
 
-final class Svarupa implements Shakti
+final class Svarupa extends Shakti
 {
-    private const DESCRIPTION = 'complete potency';
+    protected const NAMES = ['Svarūpa-śakti', 'Pārā-śakti'];
 
-    private array $names = ['Svarūpa-śakti', 'Pārā-śakti'];
+    protected const DESCRIPTION = 'complete potency';
 
-    public function __construct(string|array $shaktiNames = 'Śrīmatī Rādhikā')
+    private static self $instance;
+
+    public readonly Bahiranga $maya;
+
+    public readonly Antaranga $cit;
+
+    public readonly Tatastha $jiva;
+
+    public function __construct()
     {
-        $this->names = array_merge($this->names, (array) $shaktiNames);
+        $this->cit = new Antaranga();
+        $this->maya = new Bahiranga();
+        $this->jiva = new Tatastha();
     }
 
-    public function getName(): string
+    public static function getInstance(): self
     {
-        return $this->names[0];
-    }
+        if (! isset(self::$instance)) {
+            self::$instance = new self();
+        }
 
-    public function getNames(): array
-    {
-        return $this->names;
-    }
-
-    public function getDescription(): string
-    {
-        return self::DESCRIPTION;
-    }
-
-    public function cit(): Antaranga
-    {
-        return new Antaranga();
-    }
-
-    public function maya(): Bahiranga
-    {
-        return new Bahiranga();
-    }
-
-    public function jiva(): Tatastha
-    {
-        return new Tatastha();
-    }
-
-    public function cloudSat(string $originalSat): string
-    {
-        return $originalSat;
-    }
-
-    public function cloudCit(string $originalChit): string
-    {
-        return $originalChit;
-    }
-
-    public function cloudAnanda(string $originalAnanda): string
-    {
-        return $originalAnanda;
+        return self::$instance;
     }
 }

@@ -1,6 +1,6 @@
 {
-    "name": "gaura108/soul-interface",
-    "description": "Vedic paradigm through OOP principles",
+    "name": "gauracreative/soul-interface",
+    "description": "Vedic concept of God and the Soul through OOP principles",
     "keywords": [
         "Vedas", "God", "Krishna", "Rama", "soul", "jiva", "maya", "karma"
     ],
@@ -10,21 +10,14 @@
     "authors": [
         {
             "name": "Jay Gaura",
-            "email": "jay@gauracreative.com",
-            "homepage": "https://gauracreative.com"
+            "homepage": "https://soul-interface.gauracreative.com"
         }
     ],
     "autoload": {
-        "classmap": [
-            "src/",
-            "docs/"
-        ]
+        "psr-4": {
+            "SI\\": "src/"
+        }
     },
-    "require-dev": {
-        "phpunit/phpunit": "^9"
-    },
-    "require": {
-        "friendsofphp/php-cs-fixer": "^3.13",
-        "vlucas/phpdotenv": "^5.5"
-    }
+    "require-dev": {},
+    "require": {}
 }

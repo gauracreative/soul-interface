@@ -4,23 +4,9 @@ declare(strict_types=1);
 
 namespace SI\Shakti;
 
-class Antaranga implements Shakti
+final class Antaranga extends Shakti
 {
-    private const NAMES = ['Antaraṅga-śakti', 'Cit-śakti'];
-    private const DESCRIPTION = 'internal potency';
+    protected const NAMES = ['Antaraṅga-śakti', 'Cit-śakti'];
 
-    public function getName(): string
-    {
-        return self::NAMES[0];
-    }
-
-    public function getNames(): array
-    {
-        return self::NAMES;
-    }
-
-    public function getDescription(): string
-    {
-        return self::DESCRIPTION;
-    }
+    protected const DESCRIPTION = 'Internal potency. This energy creates and manages everything within the spiritual abode, including all the paraphernalia, the love, the sweet relationship and even Krishna\'s own falling in love.';
 }

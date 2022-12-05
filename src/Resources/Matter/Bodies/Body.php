@@ -8,6 +8,10 @@ interface Body
 {
     public function getName(): string;
 
+    public function getAge(): int;
+
+    public function age(): bool;
+
     public function abilityToThink(): ?string;
 
     public function abilityToSmell(): ?string;

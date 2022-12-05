@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SI\Resources\Spirit\Adhikar;
 
-final class Sukriti implements bhaktiAdhikar
+final class Sukriti implements BhaktiAdhikar
 {
     public function getName(): string
     {
@@ -13,6 +13,6 @@ final class Sukriti implements bhaktiAdhikar
 
     public function getDescription(): ?string
     {
-        return 'gathering spiritual pios credits';
+        return 'gathering spiritual pious credits';
     }
 }
